@@ -2,12 +2,12 @@
 FROM eclipse-temurin:17-jdk-jammy AS builder
 WORKDIR /app
 # Copy pom.xml and mvnw script to the working directory
-COPY mvnw .
-COPY pom.xml .
+COPY TodoApp/mvnw
+COPY TodoApp/pom.xml
 # Ensure mvnw is executable
 RUN chmod +x mvnw
 # Copy the rest of the project
-COPY src ./src
+COPY src TodoApp/src
 # Run the maven build using the wrapper
 RUN ./mvnw package -DskipTests
 
